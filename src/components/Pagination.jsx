@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Posts2 from "./Posts2";
+import React, { useEffect, useState } from "react";
 import NumberPage from "./NumberPage";
 import Todos from "./Todos";
 
@@ -15,7 +14,7 @@ const Pagination = ({
   const setPosts = setTodoState;
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(4);
+  const [postPerPage, setPostPerPage] = useState(5);
 
   useEffect(() => {
     const fetchPosts = async () => {

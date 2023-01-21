@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const AddTodo = (props) => {
+  console.log("props:", props);
+  const search = props.search;
+  const setSearch = props.setSearch;
   const addTodo = props.addTodoFunc;
 
   const [title, setTitle] = useState([]);
-  ///////////css
+
   const addTodoFormStyle = {
     display: "flex",
   };
@@ -16,7 +19,7 @@ const AddTodo = (props) => {
   const addTodoSubmitStyle = {
     color: "red",
   };
-  ////////////////css
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.length > 0) {
@@ -26,6 +29,10 @@ const AddTodo = (props) => {
   };
   return (
     <form style={addTodoFormStyle}>
+      <input
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search contacts"
+      />
       <input
         value={title}
         style={addTodoInputStyle}
