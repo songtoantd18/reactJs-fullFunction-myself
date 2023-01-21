@@ -1,14 +1,17 @@
 import React, { useState, Fragment, useEffect } from "react";
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
-import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
 
-const Todos = ({ todosState, onMarkComplete, onDelete, onAddTodo }) => {
+import Loading from "./Loading";
+
+const Todos = ({ onMarkComplete, onDelete, onAddTodo, posts2, loading2 }) => {
+  if (loading2) {
+    return <Loading />;
+  }
   return (
     <Fragment>
       <AddTodo addTodoFunc={onAddTodo} />
-      {todosState.map((todo) => {
+      {posts2.map((todo) => {
         return (
           <TodoItem
             todoProps={todo}

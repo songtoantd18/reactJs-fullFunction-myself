@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-// import Pagination2 from "./Pagination2";
-import Todos from "./Todos";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Pagination from "./Pagination";
 
 const Header = () => {
   const [todosState, setTodoState] = useState([]);
@@ -91,14 +90,13 @@ const Header = () => {
 
   return (
     <div style={headerStyles}>
-      day la header
-      <Todos
+      <Pagination
         todosState={todosState}
         onMarkComplete={markComplete}
         onDelete={handleDelete}
         onAddTodo={handleAddTodo}
+        setTodoState={setTodoState}
       />
-      {/* <Pagination2 todosState={todosState} /> */}
     </div>
   );
 };

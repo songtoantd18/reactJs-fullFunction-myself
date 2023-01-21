@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import Header from "./components/Header";
-import Pagination2 from "./components/Pagination2";
+import React from "react";
 import "../src/App.css";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <div>
       <Header />
-      {/* <Pagination2 /> */}
     </div>
   );
 };

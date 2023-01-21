@@ -6,6 +6,7 @@ const Posts2 = ({ posts2, loading2 }) => {
   }
   return (
     <ul>
+      1111
       {posts2.map((item) => {
         return (
           <li key={item.id}>
@@ -14,6 +15,7 @@ const Posts2 = ({ posts2, loading2 }) => {
           </li>
         );
       })}
+      2222
     </ul>
   );
 };

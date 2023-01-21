@@ -1,6 +1,6 @@
 import React from "react";
 
-const Page2 = ({ postPerPage2, totalPosts2, paginate2 }) => {
+const NumberPage = ({ postPerPage2, totalPosts2, paginate2 }) => {
   const pageNumbers2 = [];
   for (let i = 1; i <= Math.ceil(totalPosts2 / postPerPage2); i++) {
     pageNumbers2.push(i);
@@ -25,4 +25,4 @@ const Page2 = ({ postPerPage2, totalPosts2, paginate2 }) => {
   );
 };
 
-export default Page2;
+export default NumberPage;

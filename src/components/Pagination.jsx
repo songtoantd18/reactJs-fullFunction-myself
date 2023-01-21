@@ -1,46 +1,61 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import Posts from "./Posts";
-// import Page from "./Page";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Posts2 from "./Posts2";
+import NumberPage from "./NumberPage";
+import Todos from "./Todos";
 
-// const Pagination = () => {
-//   const [posts, setPosts] = useState([]);
-//   const [loading, setLoading] = useState(false);
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const [postPerPage, setPostPerPage] = useState(7);
+const Pagination = ({
+  todosState,
+  setTodoState,
+  onMarkComplete,
+  onDelete,
+  onAddTodo,
+}) => {
+  const posts = todosState;
+  const setPosts = setTodoState;
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(4);
 
-//   useEffect(() => {
-//     const fetchPosts = async () => {
-//       setLoading(true);
-//       const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-//       setPosts(res.data);
-//       setLoading(false);
-//     };
-//     fetchPosts();
-//   }, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const res = await axios.get(
+        "https://62fbae6be4bcaf53518af2ed.mockapi.io/api/list-courses"
+      );
+      console.log("res.data:", res.data);
+      setPosts(res.data);
+      setLoading(false);
+    };
+    fetchPosts();
+  }, []);
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const cureentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => {
+    console.log("pageNumber:", pageNumber);
+    console.log("1:", 1);
+    return setCurrentPage(pageNumber);
+  };
 
-//   const indexOfLastPost = currentPage * postPerPage;
-//   const indexOfFirstPost = indexOfLastPost - postPerPage;
-//   const cureentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-//   console.log("indexOfLastPost:", indexOfLastPost);
-//   console.log("indexOfFirstPost:", indexOfFirstPost);
-//   console.log("cureentPosts:", cureentPosts);
+  return (
+    <div>
+      <Todos
+        todosState={posts}
+        onMarkComplete={onMarkComplete}
+        onDelete={onDelete}
+        onAddTodo={onAddTodo}
+        posts2={cureentPosts}
+        loading2={loading}
+      />
 
-//   const paginate = (pageNumber) => {
-//     console.log("pageNumber:", pageNumber);
-//     console.log("1:", 1);
-//     return setCurrentPage(pageNumber);
-//   };
-//   return (
-//     <div>
-//       <Posts posts={cureentPosts} loading={loading} />
-//       <Page
-//         postPerPage={postPerPage}
-//         totalPosts={posts.length}
-//         paginate={paginate}
-//       />
-//     </div>
-//   );
-// };
+      <NumberPage
+        postPerPage2={postPerPage}
+        totalPosts2={posts.length}
+        paginate2={paginate}
+      />
+    </div>
+  );
+};
 
-// export default Pagination;
+export default Pagination;
