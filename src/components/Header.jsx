@@ -11,17 +11,12 @@ const Header = () => {
           "https://62fbae6be4bcaf53518af2ed.mockapi.io/api/list-courses"
         );
         setTodoState(res.data);
-      } catch (error) {
-        console.log("error.message:", error.message);
-      }
+      } catch (error) {}
     };
     getTodos();
   }, []);
   const markComplete = async (id, complete, title, img) => {
-    console.log("id:", id);
-
     try {
-      console.log("1:", 1);
       const res = await axios.put(
         `https://62fbae6be4bcaf53518af2ed.mockapi.io/api/list-courses/${id}`,
         {
@@ -31,13 +26,11 @@ const Header = () => {
           img,
         }
       );
-      console.log("res.data:", res.data);
     } catch (error) {
       console.log("error:", "loi k lay api duoc");
     }
     const demo = async () => {
       try {
-        console.log("2:", 2);
         const res1 = await axios.get(
           `https://62fbae6be4bcaf53518af2ed.mockapi.io/api/list-courses/`
         );
@@ -76,10 +69,7 @@ const Header = () => {
       );
       const newTodos = [...todosState, res.data];
       setTodoState(newTodos);
-      console.log("res.data:", res.data);
-    } catch (error) {
-      console.log("error:", error);
-    }
+    } catch (error) {}
   };
   const headerStyles = {
     background: "#333",

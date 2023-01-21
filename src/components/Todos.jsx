@@ -4,15 +4,28 @@ import TodoItem from "./TodoItem";
 
 import Loading from "./Loading";
 
-const Todos = ({ onMarkComplete, onDelete, onAddTodo, posts2, loading2 }) => {
+const Todos = ({
+  todosState,
+  setTodoState,
+  onMarkComplete,
+  onDelete,
+  onAddTodo,
+  posts2,
+  loading2,
+}) => {
   const [search, setSearch] = useState("");
-
   if (loading2) {
     return <Loading />;
   }
   return (
     <Fragment>
-      <AddTodo addTodoFunc={onAddTodo} search={search} setSearch={setSearch} />
+      <AddTodo
+        todosState={todosState}
+        setTodoState={setTodoState}
+        addTodoFunc={onAddTodo}
+        search={search}
+        setSearch={setSearch}
+      />
       {posts2
         .filter((item) => {
           return search.toLowerCase() === ""

@@ -2,12 +2,36 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const AddTodo = (props) => {
-  console.log("props:", props);
   const search = props.search;
   const setSearch = props.setSearch;
   const addTodo = props.addTodoFunc;
-
+  const todosState = props.todosState;
+  const setTodoState = props.setTodoState;
+  const [order, setOrder] = useState("ASC");
   const [title, setTitle] = useState([]);
+
+  const sortingAtoZ = (col) => {
+    console.log("col:", col);
+    if (order === "ASC") {
+      console.log("order:", order);
+      const sorted = [...todosState].sort((a, b) =>
+        a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+      );
+      setTodoState(sorted);
+      setOrder("ASC");
+    }
+  };
+  const sortingZtoA = (col) => {
+    console.log("col:", col);
+    if (order === "ASC") {
+      console.log("order:", order);
+      const sorted = [...todosState].sort((a, b) =>
+        a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+      );
+      setTodoState(sorted);
+      setOrder("ASC");
+    }
+  };
 
   const addTodoFormStyle = {
     display: "flex",
@@ -31,7 +55,7 @@ const AddTodo = (props) => {
     <form style={addTodoFormStyle}>
       <input
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search contacts"
+        placeholder="Search title"
       />
       <input
         value={title}
@@ -44,6 +68,8 @@ const AddTodo = (props) => {
       <button onClick={(e) => handleSubmit(e)} style={addTodoSubmitStyle}>
         add
       </button>
+      <button onClick={() => sortingAtoZ("title")}>Sort A-Z</button>
+      <button onClick={() => sortingZtoA("title")}>Sort Z-A</button>
     </form>
   );
 };

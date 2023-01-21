@@ -14,7 +14,7 @@ const Pagination = ({
   const setPosts = setTodoState;
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(5);
+  const [postPerPage, setPostPerPage] = useState(10);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -22,7 +22,6 @@ const Pagination = ({
       const res = await axios.get(
         "https://62fbae6be4bcaf53518af2ed.mockapi.io/api/list-courses"
       );
-      console.log("res.data:", res.data);
       setPosts(res.data);
       setLoading(false);
     };
@@ -32,15 +31,14 @@ const Pagination = ({
   const indexOfFirstPost = indexOfLastPost - postPerPage;
   const cureentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => {
-    console.log("pageNumber:", pageNumber);
-    console.log("1:", 1);
     return setCurrentPage(pageNumber);
   };
 
   return (
     <div>
       <Todos
-        todosState={posts}
+        todosState={todosState}
+        setTodoState={setTodoState}
         onMarkComplete={onMarkComplete}
         onDelete={onDelete}
         onAddTodo={onAddTodo}
