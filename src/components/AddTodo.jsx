@@ -10,7 +10,8 @@ const AddTodo = (props) => {
   const [order, setOrder] = useState("ASC");
   const [title, setTitle] = useState([]);
 
-  const sortingAtoZ = (col) => {
+  const handleSort = (e, col) => {
+    e.preventDefault();
     console.log("col:", col);
     if (order === "ASC") {
       console.log("order:", order);
@@ -18,12 +19,9 @@ const AddTodo = (props) => {
         a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );
       setTodoState(sorted);
-      setOrder("ASC");
+      setOrder("DSC");
     }
-  };
-  const sortingZtoA = (col) => {
-    console.log("col:", col);
-    if (order === "ASC") {
+    if (order === "DSC") {
       console.log("order:", order);
       const sorted = [...todosState].sort((a, b) =>
         a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
@@ -68,8 +66,7 @@ const AddTodo = (props) => {
       <button onClick={(e) => handleSubmit(e)} style={addTodoSubmitStyle}>
         add
       </button>
-      <button onClick={() => sortingAtoZ("title")}>Sort A-Z</button>
-      <button onClick={() => sortingZtoA("title")}>Sort Z-A</button>
+      <button onClick={(e) => handleSort(e, "title")}>Sorting</button>
     </form>
   );
 };
