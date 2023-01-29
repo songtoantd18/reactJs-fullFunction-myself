@@ -12,9 +12,7 @@ const AddTodo = (props) => {
 
   const handleSort = (e, col) => {
     e.preventDefault();
-    console.log("col:", col);
     if (order === "ASC") {
-      console.log("order:", order);
       const sorted = [...todosState].sort((a, b) =>
         a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );

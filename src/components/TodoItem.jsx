@@ -27,11 +27,6 @@ const TodoItem = (props) => {
 
   return (
     <p style={TodoItemStyle}>
-      {/* <input
-        type="checkbox"
-        onChange={markComplete.bind(this, todo.id)}
-        checked={todo.completed}
-      /> */}
       {todo.title}:{todo.id}
       <button style={deleteButtonStyle} onClick={onClick}>
         check

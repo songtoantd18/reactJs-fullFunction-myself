@@ -14,7 +14,8 @@ const Pagination = ({
   const setPosts = setTodoState;
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(10);
+  const [postPerPage, setPostPerPage] = useState(4);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -31,6 +32,8 @@ const Pagination = ({
   const indexOfFirstPost = indexOfLastPost - postPerPage;
   const cureentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => {
+    console.log("pageNumber:", pageNumber);
+    setIsActive(!isActive);
     return setCurrentPage(pageNumber);
   };
 
@@ -50,6 +53,7 @@ const Pagination = ({
         postPerPage2={postPerPage}
         totalPosts2={posts.length}
         paginate2={paginate}
+        isActive={isActive}
       />
     </div>
   );

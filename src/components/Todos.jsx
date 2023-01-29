@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 
@@ -26,13 +26,46 @@ const Todos = ({
         search={search}
         setSearch={setSearch}
       />
-      {posts2
+      {search.length === 0
+        ? posts2.map((todo) => {
+            return (
+              <TodoItem
+                todoProps={todo}
+                key={todo.id}
+                onClick={() =>
+                  onMarkComplete(todo.id, todo.complete, todo.title, todo.img)
+                }
+                onDelete={() => onDelete(todo.id)}
+              />
+            );
+          })
+        : todosState
+            .filter((item) => {
+              return search.toLowerCase() === ""
+                ? item
+                : item.title.toLowerCase().includes(search);
+            })
+            .map((todo) => {
+              return (
+                <TodoItem
+                  todoProps={todo}
+                  key={todo.id}
+                  onClick={() =>
+                    onMarkComplete(todo.id, todo.complete, todo.title, todo.img)
+                  }
+                  onDelete={() => onDelete(todo.id)}
+                />
+              );
+            })}
+
+      {/* {posts2
         .filter((item) => {
           return search.toLowerCase() === ""
             ? item
             : item.title.toLowerCase().includes(search);
         })
         .map((todo) => {
+          console.log("todo:", todo);
           return (
             <TodoItem
               todoProps={todo}
@@ -43,7 +76,7 @@ const Todos = ({
               onDelete={() => onDelete(todo.id)}
             />
           );
-        })}
+        })} */}
     </Fragment>
   );
 };
