@@ -32,7 +32,7 @@ const Todos = ({
               <TodoItem
                 todoProps={todo}
                 key={todo.id}
-                onClick={() =>
+                onMarkComplete={() =>
                   onMarkComplete(todo.id, todo.complete, todo.title, todo.img)
                 }
                 onDelete={() => onDelete(todo.id)}
@@ -50,33 +50,13 @@ const Todos = ({
                 <TodoItem
                   todoProps={todo}
                   key={todo.id}
-                  onClick={() =>
+                  onMarkComplete={() =>
                     onMarkComplete(todo.id, todo.complete, todo.title, todo.img)
                   }
                   onDelete={() => onDelete(todo.id)}
                 />
               );
             })}
-
-      {/* {posts2
-        .filter((item) => {
-          return search.toLowerCase() === ""
-            ? item
-            : item.title.toLowerCase().includes(search);
-        })
-        .map((todo) => {
-          console.log("todo:", todo);
-          return (
-            <TodoItem
-              todoProps={todo}
-              key={todo.id}
-              onClick={() =>
-                onMarkComplete(todo.id, todo.complete, todo.title, todo.img)
-              }
-              onDelete={() => onDelete(todo.id)}
-            />
-          );
-        })} */}
     </Fragment>
   );
 };

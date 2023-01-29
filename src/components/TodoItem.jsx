@@ -3,7 +3,7 @@ import React from "react";
 
 const TodoItem = (props) => {
   const todo = props.todoProps;
-  const onClick = props.onClick;
+  const onMarkComplete = props.onMarkComplete;
   const onDelete = props.onDelete;
 
   //   css
@@ -28,7 +28,7 @@ const TodoItem = (props) => {
   return (
     <p style={TodoItemStyle}>
       {todo.title}:{todo.id}
-      <button style={deleteButtonStyle} onClick={onClick}>
+      <button style={deleteButtonStyle} onClick={onMarkComplete}>
         check
       </button>
       <button style={deleteButtonStyle} onClick={onDelete}>
