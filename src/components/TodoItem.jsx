@@ -5,6 +5,7 @@ const TodoItem = (props) => {
   const todo = props.todoProps;
   const onMarkComplete = props.onMarkComplete;
   const onDelete = props.onDelete;
+  const handleEdit = props.handleEdit;
 
   //   css
   const TodoItemStyle = {
@@ -22,6 +23,7 @@ const TodoItem = (props) => {
     borderRadius: "50%",
     cursor: "pointer",
     float: "right",
+    textTransform: "capitalize",
   };
   //css
 
@@ -33,6 +35,9 @@ const TodoItem = (props) => {
       </button>
       <button style={deleteButtonStyle} onClick={onDelete}>
         delete
+      </button>
+      <button style={deleteButtonStyle} onClick={handleEdit}>
+        edit
       </button>
     </p>
   );

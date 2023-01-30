@@ -42,6 +42,7 @@ const AddTodo = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("1:", 1);
     if (title.length > 0) {
       addTodo(title);
       setTitle("");
@@ -58,7 +59,7 @@ const AddTodo = (props) => {
         style={addTodoInputStyle}
         type="text"
         name="title"
-        placeholder="them viec"
+        placeholder="add to do"
         onChange={(e) => setTitle(e.target.value)}
       />
       <button onClick={(e) => handleSubmit(e)} style={addTodoSubmitStyle}>

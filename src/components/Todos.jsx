@@ -12,6 +12,7 @@ const Todos = ({
   onAddTodo,
   posts2,
   loading2,
+  handleEdit,
 }) => {
   const [search, setSearch] = useState("");
   if (loading2) {
@@ -36,6 +37,7 @@ const Todos = ({
                   onMarkComplete(todo.id, todo.complete, todo.title, todo.img)
                 }
                 onDelete={() => onDelete(todo.id)}
+                handleEdit={() => handleEdit(todo.id)}
               />
             );
           })
@@ -54,6 +56,7 @@ const Todos = ({
                     onMarkComplete(todo.id, todo.complete, todo.title, todo.img)
                   }
                   onDelete={() => onDelete(todo.id)}
+                  handleEdit={() => handleEdit(todo.id)}
                 />
               );
             })}

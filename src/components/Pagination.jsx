@@ -9,6 +9,7 @@ const Pagination = ({
   onMarkComplete,
   onDelete,
   onAddTodo,
+  handleEdit,
 }) => {
   const posts = todosState;
   const setPosts = setTodoState;
@@ -47,6 +48,7 @@ const Pagination = ({
         onAddTodo={onAddTodo}
         posts2={cureentPosts}
         loading2={loading}
+        handleEdit={handleEdit}
       />
 
       <NumberPage

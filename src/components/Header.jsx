@@ -4,6 +4,8 @@ import Pagination from "./Pagination";
 
 const Header = () => {
   const [todosState, setTodoState] = useState([]);
+  const [editTodo, setEditTodo] = useState(null);
+  console.log("editTodo:", editTodo);
   useEffect(() => {
     const getTodos = async () => {
       try {
@@ -57,7 +59,12 @@ const Header = () => {
       console.log("error:", error);
     }
   };
-
+  const handleEdit = (id) => {
+    console.log("id:", id);
+    const findTodo = todosState.find((todo) => todo.id === id);
+    setEditTodo(findTodo);
+    console.log("findTodo:", findTodo);
+  };
   const handleAddTodo = async (title) => {
     try {
       const res = await axios.post(
@@ -86,6 +93,7 @@ const Header = () => {
         onDelete={handleDelete}
         onAddTodo={handleAddTodo}
         setTodoState={setTodoState}
+        handleEdit={handleEdit}
       />
     </div>
   );
