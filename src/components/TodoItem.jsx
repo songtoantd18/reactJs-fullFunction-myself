@@ -36,9 +36,9 @@ const TodoItem = (props) => {
       <button style={deleteButtonStyle} onClick={onDelete}>
         delete
       </button>
-      <button style={deleteButtonStyle} onClick={handleEdit}>
+      {/* <button style={deleteButtonStyle} onClick={handleEdit}>
         edit
-      </button>
+      </button> */}
     </p>
   );
 };
