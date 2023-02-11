@@ -4,8 +4,10 @@ import Header from "./components/Header";
 
 const App = () => {
   return (
-    <div>
-      <Header />
+    <div className="container">
+      <div className="app-wrapper">
+        <Header />
+      </div>
     </div>
   );
 };
